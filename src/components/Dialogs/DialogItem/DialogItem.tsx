@@ -2,12 +2,12 @@ import React from 'react';
 import d from './DialogItem.module.css'
 import {NavLink} from "react-router-dom";
 
-type DialogTypes={
+type DialogItemTypes={
     name:string
     id:number
 }
 
-const DialogItem = (props:DialogTypes) => {
+const DialogItem = (props:DialogItemTypes) => {
     return (
         <div className={`col-3 ${d.dialogsItems}`}>
             <div className={d.item}>

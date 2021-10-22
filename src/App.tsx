@@ -13,15 +13,13 @@ function App() {
     <div className="App">
         <Header/>
         <div className={'row'}>
-            <div className={'col-3 fixed-left'}>
+            <div className={'col-3 col-12 fixed-left'}>
                 {/*{dialogShow?<Dialog/>:<SideBar/>}*/}
                 <SideBar/>
             </div>
             <div className="col-6">
                 <Route path={'/profile'} component={Profile}/>
                 <Route path={'/messages'} component={Dialog}/>
-
-
             </div>
             <div className="col-3">
             </div>
