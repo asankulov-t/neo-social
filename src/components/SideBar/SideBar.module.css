@@ -1,0 +1,22 @@
+.nav{
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+.ul{
+    list-style: none;
+    padding-left: 0;
+}
+.li{
+    margin-bottom: 12px;
+}
+.li span{
+    padding-left: 15px;
+}
+.li a{
+    font-weight: bold;
+}
+.li a.active{
+    color: #888cff;
+}

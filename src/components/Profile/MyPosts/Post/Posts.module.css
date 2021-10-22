@@ -1,0 +1,16 @@
+.post{
+    margin-top: 15px;
+}
+.post img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+.reaction{
+    margin-top: 10px;
+}
+.reaction span{
+    margin-top: 10px;
+    margin-right: 15px;
+}
