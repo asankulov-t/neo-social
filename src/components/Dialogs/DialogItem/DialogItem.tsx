@@ -1,18 +1,19 @@
 import React from 'react';
-import d from './DialogItem.module.css'
+import di from './DialogItem.module.css'
 import {NavLink} from "react-router-dom";
 
-type DialogItemTypes={
-    name:string
-    id:number
+type InDialogItemTypes = {
+    id: number
+    name: string
 }
+type DialogItemTypes = { dialogs: Array<InDialogItemTypes> }
 
-const DialogItem = (props:DialogItemTypes) => {
+const DialogItem = (props: DialogItemTypes) => {
+    let dialogElement = props.dialogs.map(d => <div key={d.id} className={di.item}><NavLink
+        to={`/messages/${d.id}`}>{d.name}</NavLink></div>)
     return (
-        <div className={`col-3 ${d.dialogsItems}`}>
-            <div className={d.item}>
-                <NavLink to={`messages/${props.name}/${props.id}`}>{props.name}</NavLink>
-            </div>
+        <div className={di.dialogsItems}>
+            {dialogElement}
         </div>
     );
 };

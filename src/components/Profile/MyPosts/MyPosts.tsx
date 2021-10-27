@@ -1,16 +1,43 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import Post from "./Post/Post";
 import p from './MyPosts.module.css'
-const MyPosts = () => {
+
+type InPostData = {
+    id: number
+    post: string
+    likeCount: number
+    dislike: number
+}
+type MyPostsData = {
+    postData: Array<InPostData>
+    addPost:(newText:string)=>void
+}
+
+
+const MyPosts = (props: MyPostsData) => {
+
+    const [text, setText]=useState('')
+    const addPost=()=>{
+            let newText=text
+            props.addPost(newText)
+            console.log(props.postData)
+    }
+    const onChangeHendler=(e:ChangeEvent<HTMLTextAreaElement>)=> setText(e.target.value)
+
+    let postElement = props.postData.map(post => <Post postText={post.post}
+                                                       like={post.likeCount}
+                                                       dislike={post.dislike}/>)
     return (
         <div className={p.posts}>
             My posts
             <div>
-                <textarea></textarea>
-                <div><button>Add post</button></div>
+                <textarea ref={text} onChange={onChangeHendler}></textarea>
+                <div>
+                    <button onClick={addPost}>Add post</button>
+                </div>
             </div>
             <div>
-                <Post like={2530} dislike={15} postText={'Hello I want to go to America'}/>
+                {postElement}
             </div>
         </div>
     );

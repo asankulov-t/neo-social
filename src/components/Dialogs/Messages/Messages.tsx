@@ -1,16 +1,24 @@
 import React from 'react';
-import m from "./Message.module.css";
+import mes from "./Message.module.css";
 
-type MessagesType={
+type InMessageType={
+    id:number
     message:string
 }
 
+type MessagesType={
+    messageData:Array<InMessageType>
+}
+
 const Messages = (props:MessagesType) => {
+    let messageElement=props.messageData.map(m=>(
+        <div key={m.id} className={mes.message}>
+            {m.message}
+        </div>
+    ))
     return (
-        <div className={`col-9 ${m.messages}`}>
-            <div className={m.message}>
-                {props.message}
-            </div>
+        <div className={`col-9 ${mes.messages}`}>
+            {messageElement}
         </div>
     );
 };
