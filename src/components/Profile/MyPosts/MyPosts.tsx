@@ -9,29 +9,32 @@ type InPostData = {
     dislike: number
 }
 type MyPostsData = {
+    newPostText:string
     postData: Array<InPostData>
     addPost:(newText:string)=>void
+    changePostText:(e:string)=>void
 }
 
 
 const MyPosts = (props: MyPostsData) => {
 
-    const [text, setText]=useState('')
     const addPost=()=>{
-            let newText=text
-            props.addPost(newText)
+            if (props.newPostText!=''){
+                props.addPost(props.newPostText)
+            }
             console.log(props.postData)
     }
-    const onChangeHendler=(e:ChangeEvent<HTMLTextAreaElement>)=> setText(e.target.value)
+    const onChangeHendler=(e:ChangeEvent<HTMLTextAreaElement>)=> props.changePostText(e.currentTarget.value)
 
     let postElement = props.postData.map(post => <Post postText={post.post}
                                                        like={post.likeCount}
-                                                       dislike={post.dislike}/>)
+                                                       dislike={post.dislike}/>).reverse()
     return (
         <div className={p.posts}>
             My posts
             <div>
-                <textarea ref={text} onChange={onChangeHendler}></textarea>
+                <textarea value={props.newPostText}
+                          onChange={onChangeHendler}></textarea>
                 <div>
                     <button onClick={addPost}>Add post</button>
                 </div>

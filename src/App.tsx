@@ -15,6 +15,7 @@ type MessageType = {
     message: string
 }
 type DialogsTypes = {
+    messageText:string
     dialogs: Array<DialogType>
     messages: Array<MessageType>
 }
@@ -27,6 +28,7 @@ type PostDataType = {
 }
 
 type ProfilePageTypes = {
+    newPostText:string
     posts: Array<PostDataType>
 }
 
@@ -38,6 +40,9 @@ type StateData = {
 type AppTypes = {
     state: StateData
     addPost:(newText:string)=>void
+    changePostText:(e:string)=>void
+    sendMessage:(messageText:string)=>void
+    changeMessageText:(e:string)=>void
 }
 
 function App(props: AppTypes) {
@@ -51,10 +56,17 @@ function App(props: AppTypes) {
                 <div className="col-6">
                     <Route path={'/profile'}
                            render={() => <Profile postData={props.state.profilePage.posts}
+                                                  newPostText={props.state.profilePage.newPostText}
                                                   addPost={props.addPost}
+                                                  changePostText={props.changePostText}
                            />}/>
                     <Route path={'/messages'}
-                           render={() => <Dialog dialogsData={props.state.dialogPage}/>}/>
+                           render={() => <Dialog
+                               text={props.state.dialogPage.messageText}
+                               dialogsData={props.state.dialogPage}
+                               sendMessage={props.sendMessage}
+                               changeMessageText={props.changeMessageText}
+                           />}/>
                 </div>
                 <div className="col-3">
                 </div>

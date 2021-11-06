@@ -9,8 +9,10 @@ type InPostData = {
     dislike: number
 }
 type PostDataProps = {
+    newPostText: string
     postData: Array<InPostData>
-    addPost:(newText:string)=>void
+    addPost: (newText: string) => void
+    changePostText:(e:string)=>void
 }
 
 
@@ -24,7 +26,12 @@ const Profile = (props: PostDataProps) => {
             <div>
                 ava + dess
             </div>
-            <MyPosts postData={props.postData} addPost={props.addPost}/>
+            <MyPosts
+                postData={props.postData}
+                newPostText={props.newPostText}
+                addPost={props.addPost}
+                changePostText={props.changePostText}
+            />
         </div>
     );
 };

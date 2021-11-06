@@ -5,3 +5,17 @@
     border-radius: 10px;
     padding: 5px;
 }
+.messages textarea{
+    margin-top: 10px;
+    width: 100%;
+    outline: none;
+    border-radius: 10px;
+    border: #888cff 2px solid;
+}
+.messages button{
+    padding: 5px 15px;
+    color:white;
+    background-color: #888cff;
+    border: none;
+    border-radius: 15px;
+}

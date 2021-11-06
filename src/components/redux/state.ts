@@ -1,3 +1,5 @@
+import {Rerender} from "../../Rerender";
+
 type DialogsType = {
     id: number
     name: string
@@ -7,16 +9,19 @@ type MessageType = {
     message: string
 }
 type PostType = {
+
     id: number
     post: string
     likeCount: number
     dislike: number
 }
 type MessagePageType = {
+    messageText:string
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
 }
 type ProfilePageTypes = {
+    newPostText:string
     posts: Array<PostType>
 }
 type StateType = {
@@ -27,6 +32,7 @@ type StateType = {
 
 let state: StateType = {
     dialogPage: {
+        messageText:'ds',
         dialogs: [{id: 1, name: 'Arken'},
             {id: 2, name: 'Adil'},
             {id: 3, name: 'Miron'},
@@ -41,6 +47,7 @@ let state: StateType = {
             {id: 6, message: 'You must learn Js'},]
     },
     profilePage: {
+        newPostText:'',
         posts: [
             {id: 1, post: 'Hello world', likeCount: 5, dislike: 3},
             {id: 2, post: 'I want to be in USA', likeCount: 55, dislike: 0},
@@ -59,6 +66,27 @@ export let addPost=(newText:string)=>{
         likeCount:0,
         dislike:0
     }
-    state.profilePage.posts.push(newPost)
+    state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText=''
+    Rerender(state)
 }
+export let changePostText=(e:string)=>{
+    state.profilePage.newPostText=e;
+    Rerender(state)
+}
+
+export let sendMessage=(messageText:string)=>{
+    let newText:MessageType={
+        id:3,
+        message:messageText
+    }
+    state.dialogPage.messages.push(newText);
+    state.dialogPage.messageText=''
+    Rerender(state)
+}
+export let changeMessageText=(e:string)=>{
+    state.dialogPage.messageText=e;
+    Rerender(state)
+}
+
 export default state

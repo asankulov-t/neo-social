@@ -17,7 +17,10 @@ type DialogsDataType = {
     messages: Array<MessagesType>
 }
 type DialogsPostTypes = {
+    text:string
     dialogsData: DialogsDataType
+    sendMessage:(messageText:string)=>void
+    changeMessageText:(e:string)=>void
 }
 
 const Dialog = (props: DialogsPostTypes) => {
@@ -26,7 +29,12 @@ const Dialog = (props: DialogsPostTypes) => {
             <div className={'col-3'}>
                 <DialogItem dialogs={props.dialogsData.dialogs}/>
             </div>
-            <Messages messageData={props.dialogsData.messages}/>
+            <Messages
+                text={props.text}
+                messageData={props.dialogsData.messages}
+                sendMessage={props.sendMessage}
+                changeMessageText={props.changeMessageText}
+            />
         </div>
     );
 };
