@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/neo-social/static/css/main.7d7c447c.chunk.css",
-    "main.js": "/neo-social/static/js/main.47212768.chunk.js",
-    "main.js.map": "/neo-social/static/js/main.47212768.chunk.js.map",
+    "main.css": "/neo-social/static/css/main.1d9ca67e.chunk.css",
+    "main.js": "/neo-social/static/js/main.c1c693c6.chunk.js",
+    "main.js.map": "/neo-social/static/js/main.c1c693c6.chunk.js.map",
     "runtime-main.js": "/neo-social/static/js/runtime-main.6b791d8a.js",
     "runtime-main.js.map": "/neo-social/static/js/runtime-main.6b791d8a.js.map",
-    "static/js/2.62d999cc.chunk.js": "/neo-social/static/js/2.62d999cc.chunk.js",
-    "static/js/2.62d999cc.chunk.js.map": "/neo-social/static/js/2.62d999cc.chunk.js.map",
+    "static/js/2.48604c33.chunk.js": "/neo-social/static/js/2.48604c33.chunk.js",
+    "static/js/2.48604c33.chunk.js.map": "/neo-social/static/js/2.48604c33.chunk.js.map",
     "index.html": "/neo-social/index.html",
-    "static/css/main.7d7c447c.chunk.css.map": "/neo-social/static/css/main.7d7c447c.chunk.css.map",
-    "static/js/2.62d999cc.chunk.js.LICENSE.txt": "/neo-social/static/js/2.62d999cc.chunk.js.LICENSE.txt"
+    "static/css/main.1d9ca67e.chunk.css.map": "/neo-social/static/css/main.1d9ca67e.chunk.css.map",
+    "static/js/2.48604c33.chunk.js.LICENSE.txt": "/neo-social/static/js/2.48604c33.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6b791d8a.js",
-    "static/js/2.62d999cc.chunk.js",
-    "static/css/main.7d7c447c.chunk.css",
-    "static/js/main.47212768.chunk.js"
+    "static/js/2.48604c33.chunk.js",
+    "static/css/main.1d9ca67e.chunk.css",
+    "static/js/main.c1c693c6.chunk.js"
   ]
 }
