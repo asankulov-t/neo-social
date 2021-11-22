@@ -1,6 +1,8 @@
 import React, {ChangeEvent, useState} from 'react';
 import Post from "./Post/Post";
 import p from './MyPosts.module.css'
+import {ActionType} from "../../redux/store";
+import {addPostAC, changePostTextAC} from "../../redux/ProfileReducer";
 
 type InPostData = {
     id: number
@@ -13,6 +15,7 @@ type MyPostsData = {
     postData: Array<InPostData>
     addPost:(newText:string)=>void
     changePostText:(e:string)=>void
+    dispatch:(action:ActionType)=>void
 }
 
 
@@ -20,13 +23,15 @@ const MyPosts = (props: MyPostsData) => {
 
     const addPost=()=>{
             if (props.newPostText!=''){
-                props.addPost(props.newPostText)
+                props.dispatch(addPostAC(props.newPostText))
+                console.log(props.postData)
             }
-            console.log(props.postData)
-    }
-    const onChangeHendler=(e:ChangeEvent<HTMLTextAreaElement>)=> props.changePostText(e.currentTarget.value)
 
-    let postElement = props.postData.map(post => <Post postText={post.post}
+    }
+    const onChangeHendler=(e:ChangeEvent<HTMLTextAreaElement>)=> props.dispatch(changePostTextAC(e.currentTarget.value))
+
+    let postElement = props.postData.map(post => <Post key={post.id}
+                                                       postText={post.post}
                                                        like={post.likeCount}
                                                        dislike={post.dislike}/>).reverse()
     return (

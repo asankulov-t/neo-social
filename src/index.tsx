@@ -3,8 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import state, {addPost} from "./components/redux/state";
-import {Rerender} from "./Rerender";
+import store from "./components/redux/store";
 
-Rerender(state)
+const Rerender=()=>{
+    ReactDOM.render(
+        <BrowserRouter>
+            <App state={store}
+            />
+        </BrowserRouter>
+        ,
+        document.getElementById('root')
+    );
+}
+Rerender();
+store.subscriber(Rerender)
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import p from '../Profile/Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
+import {ActionType} from "../redux/store";
 
 type InPostData = {
     id: number
@@ -13,6 +14,8 @@ type PostDataProps = {
     postData: Array<InPostData>
     addPost: (newText: string) => void
     changePostText:(e:string)=>void
+    dispatch:(action:ActionType)=>void
+
 }
 
 
@@ -31,6 +34,7 @@ const Profile = (props: PostDataProps) => {
                 newPostText={props.newPostText}
                 addPost={props.addPost}
                 changePostText={props.changePostText}
+                dispatch={props.dispatch}
             />
         </div>
     );

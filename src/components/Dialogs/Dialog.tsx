@@ -2,6 +2,7 @@ import React from 'react';
 import d from './Dialog.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Messages from "./Messages/Messages";
+import {ActionType} from "../redux/store";
 
 
 type DialogsType = {
@@ -21,6 +22,7 @@ type DialogsPostTypes = {
     dialogsData: DialogsDataType
     sendMessage:(messageText:string)=>void
     changeMessageText:(e:string)=>void
+    dispatch:(action:ActionType)=>void
 }
 
 const Dialog = (props: DialogsPostTypes) => {
@@ -34,6 +36,7 @@ const Dialog = (props: DialogsPostTypes) => {
                 messageData={props.dialogsData.messages}
                 sendMessage={props.sendMessage}
                 changeMessageText={props.changeMessageText}
+                dispatch={props.dispatch}
             />
         </div>
     );
