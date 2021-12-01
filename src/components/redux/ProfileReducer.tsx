@@ -1,6 +1,18 @@
 import {ActionType, PostType, ProfilePageTypes} from './store';
 
-const ProfileReducer = (state:ProfilePageTypes,action:ActionType) => {
+let initialState = {
+    newPostText: 'ww',
+    posts: [
+        {id: 1, post: 'Hello world', likeCount: 5, dislike: 3},
+        {id: 2, post: 'I want to be in USA', likeCount: 55, dislike: 0},
+        {id: 3, post: 'I am learning js all time', likeCount: 667, dislike: 0},
+        {id: 4, post: 'social network is evil', likeCount: 856, dislike: 800},
+        {id: 5, post: 'Hello friend lets walk', likeCount: 1250, dislike: 1},
+        {id: 6, post: 'It incubator is best courses', likeCount: 1591, dislike: 0},
+    ]
+}
+
+const ProfileReducer = (state: ProfilePageTypes = initialState, action: ActionType) => {
     switch (action.type) {
         case "ADD_POST":
             let newPost: PostType = {
@@ -11,24 +23,24 @@ const ProfileReducer = (state:ProfilePageTypes,action:ActionType) => {
             }
             state.posts.push(newPost);
             state.newPostText = ''
-            break
+            return state
         case 'CHANGE_POST_TEXT':
             state.newPostText = action.messageText;
-
-            break
-        default:return state
+            return state
+        default:
+            return state
     }
 };
-export const addPostAC=(newText:string)=>{
+export const addPostAC = (newText: string) => {
     return {
-        type:'ADD_POST',
-        messageText:newText
-    }as const
+        type: 'ADD_POST',
+        messageText: newText
+    } as const
 }
-export const changePostTextAC=(newText:string)=>{
+export const changePostTextAC = (newText: string) => {
     return {
-        type:'CHANGE_POST_TEXT',
-        messageText:newText
-    }as const
+        type: 'CHANGE_POST_TEXT',
+        messageText: newText
+    } as const
 }
 export default ProfileReducer;

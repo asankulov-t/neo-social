@@ -5,7 +5,8 @@ import SideBar from "./components/SideBar/SideBar";
 import Profile from "./components/Profile/Profile";
 import Dialog from "./components/Dialogs/Dialog";
 import {Route} from 'react-router-dom';
-import {StoreStateType} from "./components/redux/store";
+import {ActionType} from "./components/redux/store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 type DialogType = {
     id: number
@@ -16,7 +17,7 @@ type MessageType = {
     message: string
 }
 type DialogsTypes = {
-    messageText:string
+    messageText: string
     dialogs: Array<DialogType>
     messages: Array<MessageType>
 }
@@ -29,25 +30,23 @@ type PostDataType = {
 }
 
 type ProfilePageTypes = {
-    newPostText:string
+    newPostText: string
     posts: Array<PostDataType>
 }
 
-// type StateData = {
-//     dialogPage: DialogsTypes
-//     profilePage: ProfilePageTypes
-// }
+type StateData = {
+    dialogReducer: DialogsTypes
+    profileReducer: ProfilePageTypes
+}
+
 
 type AppTypes = {
-    state: StoreStateType
-    // addPost:(newText:string)=>void
-    // changePostText:(e:string)=>void
-    // sendMessage:(messageText:string)=>void
-    // changeMessageText:(e:string)=>void
+    state: StateData
+    dispatch: (action: ActionType) => void
 }
 
 function App(props: AppTypes) {
-    let state=props.state._getState()
+    console.log(props.state.dialogReducer)
     return (
         <div className="App">
             <Header/>
@@ -57,19 +56,16 @@ function App(props: AppTypes) {
                 </div>
                 <div className="col-6">
                     <Route path={'/profile'}
-                           render={() => <Profile postData={props.state._state.profilePage.posts}
-                                                  dispatch={props.state.dispatch.bind(props.state)}
-                                                  newPostText={props.state._state.profilePage.newPostText}
-                                                  addPost={props.state.addPost.bind(props.state)}
-                                                  changePostText={props.state.changePostText.bind(props.state)}
+                           render={() => <Profile postData={props.state.profileReducer.posts}
+                                                  dispatch={props.dispatch.bind(props.state)}
+                                                  newPostText={props.state.profileReducer.newPostText}
+
                            />}/>
                     <Route path={'/messages'}
-                               render={() => <Dialog
-                               text={props.state._state.dialogPage.messageText}
-                               dialogsData={props.state._state.dialogPage}
-                               sendMessage={props.state.sendMessage.bind(props.state)}
-                               changeMessageText={props.state.changeMessageText.bind(props.state)}
-                               dispatch={props.state.dispatch.bind(props.state)}
+                           render={() => <DialogsContainer
+                                           text={props.state.dialogReducer.messageText}
+                                           dispatch={props.dispatch.bind(props.state)}
+                                           dialogsData={props.state.dialogReducer}
                            />}/>
                 </div>
                 <div className="col-3">

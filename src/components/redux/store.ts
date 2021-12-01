@@ -2,7 +2,7 @@ import ProfileReducer from "./ProfileReducer";
 import DialogReducer from "./DialogReducer";
 
 
-type DialogsType = {
+export type DialogsType = {
     id: number
     name: string
 }
@@ -17,12 +17,12 @@ export type PostType = {
     dislike: number
 }
 export type MessagePageType = {
-    messageText:string
+    messageText: string
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
 }
 export type ProfilePageTypes = {
-    newPostText:string
+    newPostText: string
     posts: Array<PostType>
 }
 type StateType = {
@@ -30,25 +30,25 @@ type StateType = {
     profilePage: ProfilePageTypes
 }
 
-export type ActionType={
-    type:string
-    messageText:string
+export type ActionType = {
+    type: string
+    messageText: string
 }
-export type StoreStateType={
-    _state:StateType
-    addPost:(e:string)=>void
-    changePostText:(e:string)=>void
-    sendMessage:(e:string)=>void
-    changeMessageText:(e:string)=>void
-    _rerender:(e:StateType)=>void
-    subscriber:(callBack:()=>void)=>void
-    _getState:()=>void
-    dispatch:(action:ActionType)=>void
+export type StoreStateType = {
+    _state: StateType
+    addPost: (e: string) => void
+    changePostText: (e: string) => void
+    sendMessage: (e: string) => void
+    changeMessageText: (e: string) => void
+    _rerender: (e: StateType) => void
+    subscriber: (callBack: () => void) => void
+    _getState: () => void
+    dispatch: (action: ActionType) => void
 }
-let store:StoreStateType={
+let store: StoreStateType = {
     _state: {
         dialogPage: {
-            messageText:'ds',
+            messageText: 'ds',
             dialogs: [{id: 1, name: 'Arken'},
                 {id: 2, name: 'Adil'},
                 {id: 3, name: 'Miron'},
@@ -63,7 +63,7 @@ let store:StoreStateType={
                 {id: 6, message: 'You must learn Js'},]
         },
         profilePage: {
-            newPostText:'ww',
+            newPostText: 'ww',
             posts: [
                 {id: 1, post: 'Hello world', likeCount: 5, dislike: 3},
                 {id: 2, post: 'I want to be in USA', likeCount: 55, dislike: 0},
@@ -74,49 +74,49 @@ let store:StoreStateType={
             ]
         }
     },
-    _rerender(){
+    _rerender() {
 
     },
-    addPost(newText:string){
-        let newPost:PostType={
-            id:1,
-            post:newText,
-            likeCount:0,
-            dislike:0
+    addPost(newText: string) {
+        let newPost: PostType = {
+            id: 1,
+            post: newText,
+            likeCount: 0,
+            dislike: 0
         }
         this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText=''
+        this._state.profilePage.newPostText = ''
         this._rerender(this._state)
 
     },
-    changePostText(e:string){
-        this._state.profilePage.newPostText=e;
+    changePostText(e: string) {
+        this._state.profilePage.newPostText = e;
         this._rerender(this._state)
     },
-    sendMessage(messageText:string){
-        let newText:MessageType={
-            id:3,
-            message:messageText
+    sendMessage(messageText: string) {
+        let newText: MessageType = {
+            id: 3,
+            message: messageText
         }
         this._state.dialogPage.messages.push(newText);
-        this._state.dialogPage.messageText=''
+        this._state.dialogPage.messageText = ''
         this._rerender(this._state)
 
     },
-    changeMessageText(e:string){
-        this._state.dialogPage.messageText=e;
+    changeMessageText(e: string) {
+        this._state.dialogPage.messageText = e;
         this._rerender(this._state)
     },
-    subscriber(observer){
-        this._rerender=observer
+    subscriber(observer) {
+        this._rerender = observer
     },
-    _getState(){
+    _getState() {
         return this._state
     },
-    dispatch(action:ActionType){
-        ProfileReducer(this._state.profilePage,action)
+    dispatch(action: ActionType) {
+        ProfileReducer(this._state.profilePage, action)
         this._rerender(this._state)
-        DialogReducer(this._state.dialogPage,action)
+        DialogReducer(this._state.dialogPage, action)
         this._rerender(this._state)
     }
 }

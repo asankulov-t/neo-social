@@ -2,6 +2,7 @@ import React from 'react';
 import p from '../Profile/Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
 import {ActionType} from "../redux/store";
+import MyPostContainer from "./MyPosts/MyPostContainer";
 
 type InPostData = {
     id: number
@@ -12,14 +13,15 @@ type InPostData = {
 type PostDataProps = {
     newPostText: string
     postData: Array<InPostData>
-    addPost: (newText: string) => void
-    changePostText:(e:string)=>void
-    dispatch:(action:ActionType)=>void
+    // addPost: (newText: string) => void
+    // changePostText:(e:string)=>void
+    dispatch: (action: ActionType) => void
 
 }
 
 
 const Profile = (props: PostDataProps) => {
+
     return (
         <div className={p.content}>
             <div>
@@ -29,12 +31,9 @@ const Profile = (props: PostDataProps) => {
             <div>
                 ava + dess
             </div>
-            <MyPosts
-                postData={props.postData}
-                newPostText={props.newPostText}
-                addPost={props.addPost}
-                changePostText={props.changePostText}
-                dispatch={props.dispatch}
+            <MyPostContainer postData={props.postData}
+                             dispatch={props.dispatch}
+                             newPostText={props.newPostText}
             />
         </div>
     );
