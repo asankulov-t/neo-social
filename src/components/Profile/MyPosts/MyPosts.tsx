@@ -11,7 +11,7 @@ type InPostData = {
 type MyPostsData = {
     newPostText: string
     postData: Array<InPostData>
-    addPost:()=>void
+    addPost:(e:string)=>void
     onChangeText:(e:string)=>void
 }
 
@@ -19,7 +19,7 @@ type MyPostsData = {
 const MyPosts = (props: MyPostsData) => {
 
     const addPost = () => {
-        props.addPost()
+        props.addPost(props.newPostText)
 
     }
     const onChangeHendler = (e: ChangeEvent<HTMLTextAreaElement>) =>props.onChangeText(e.currentTarget.value)

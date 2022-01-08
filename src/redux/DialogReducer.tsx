@@ -1,4 +1,4 @@
-import {ActionType, MessagePageType, MessageType} from "./store";
+import {ActionType, MessagePageType, MessageType} from '../types/Types';
 
 
 let initialState = {
@@ -21,27 +21,37 @@ const DialogReducer = (state: MessagePageType = initialState, action: ActionType
     switch (action.type) {
         case "SEND_MESSAGE":
             let newText: MessageType = {
-                id: 3,
-                message: action.messageText
+                id: 8958,
+                message: state.messageText
             }
-            state.messages.push(newText);
-            state.messageText = ''
-            return state
+            return {
+                ...state,
+                messages:[...state.messages,newText],
+                messageText:''
+            }
+            // let copystate={...state}
+            // copystate.messages=[...state.messages]
+            // copystate.messages.push(newText)
+            // copystate.messageText = ''
+            // return copystate
         case "CHANGE_MESSAGE_TEXT":
-            state.messageText = action.messageText;
-            return state
+           return {
+               ...state,
+               messageText: action.messageText
+           }
         default:
             return state
     }
 
 };
-export const sendMessageAC = (messageText: string) => {
+export const sendMessageAC = (messageText:string) => {
     return {
         type: 'SEND_MESSAGE',
         messageText: messageText
     }
 }
 export const changeMessageAC = (messageText: string) => {
+
     return {
         type: 'CHANGE_MESSAGE_TEXT',
         messageText: messageText

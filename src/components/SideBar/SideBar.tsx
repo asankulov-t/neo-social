@@ -11,6 +11,7 @@ const SideBar = () => {
                     <li className={sidebar.li}><NavLink activeClassName={sidebar.active} to="/news"><i className="fas fa-newspaper"></i><span>News</span></NavLink></li>
                     <li className={sidebar.li}><NavLink activeClassName={sidebar.active} to="/music"><i className="fas fa-music"></i><span>Music</span></NavLink></li>
                     <li className={sidebar.li}><NavLink activeClassName={sidebar.active} to="/setting"><i className="fas fa-tools"></i><span>Setting</span></NavLink></li>
+                    <li className={sidebar.li}><NavLink activeClassName={sidebar.active} to="/Users"><i className="fas fa-users"></i><span>Users</span></NavLink></li>
                 </ul>
             </nav>
         </div>

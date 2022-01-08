@@ -1,4 +1,4 @@
-import {ActionType, PostType, ProfilePageTypes} from './store';
+import {ActionType, PostType, ProfilePageTypes} from '../types/Types';
 
 let initialState = {
     newPostText: 'ww',
@@ -21,12 +21,21 @@ const ProfileReducer = (state: ProfilePageTypes = initialState, action: ActionTy
                 likeCount: 0,
                 dislike: 0
             }
-            state.posts.push(newPost);
-            state.newPostText = ''
-            return state
+            return {
+                ...state,
+                posts:[...state.posts,newPost],
+                newPostText: ''
+            }
+            // let newState={...state}
+            // newState.posts=[...state.posts]
+            // newState.posts.push(newPost);
+            // newState.newPostText = ''
+            // return newState
         case 'CHANGE_POST_TEXT':
-            state.newPostText = action.messageText;
-            return state
+            return {
+                ...state,
+                newPostText:action.messageText
+            }
         default:
             return state
     }

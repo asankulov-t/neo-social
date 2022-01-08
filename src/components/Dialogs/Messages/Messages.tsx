@@ -9,14 +9,14 @@ type InMessageType = {
 type MessagesType = {
     text: string
     messageData: Array<InMessageType>
-    sendMessage:()=>void
+    sendMessage:(e:string)=>void
     changeMessage:(e:string)=>void
 }
 
 const Messages = (props: MessagesType) => {
 
     const sendMessage = () => {
-        props.sendMessage()
+        props.sendMessage(props.text)
     }
 
     const changeMessage = (e: ChangeEvent<HTMLTextAreaElement>) =>props.changeMessage(e.currentTarget.value)

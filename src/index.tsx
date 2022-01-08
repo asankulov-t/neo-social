@@ -3,21 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import store from "./components/redux/ReduxStore";
+import store from "./redux/ReduxStore";
+import {Provider} from "react-redux";
 
-const Rerender=(state:any)=>{
+// dispatch={store.dispatch.bind(store)
+
+const Rerender=()=>{
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} dispatch={store.dispatch.bind(store)}
-            />
+           <Provider store={store}>
+               <App/>
+           </Provider>
         </BrowserRouter>
         ,
         document.getElementById('root')
     );
 }
-Rerender(store.getState());
+Rerender()
 store.subscribe(()=>{
-    let state=store.getState()
-    Rerender(state)
+    Rerender()
 })
 

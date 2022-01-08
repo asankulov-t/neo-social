@@ -9,6 +9,7 @@ type InDialogItemTypes = {
 type DialogItemTypes = { dialogs: Array<InDialogItemTypes> }
 
 const DialogItem = (props: DialogItemTypes) => {
+
     let dialogElement = props.dialogs.map(d => <div key={d.id} className={di.item}><NavLink
         to={`/messages/${d.id}`}>{d.name}</NavLink></div>)
     return (
