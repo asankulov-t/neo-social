@@ -1,37 +1,9 @@
-import {changeMessageAC, sendMessageAC} from "../../redux/DialogReducer";
+import { sendMessageAC} from "../../redux/DialogReducer";
 import Dialog from "./Dialog";
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import { StateData } from "../../types/Types";
 
-type DialogType = {
-    id: number
-    name: string
-}
-type MessageType = {
-    id: number
-    message: string
-}
-type DialogsTypes = {
-    messageText: string
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
-}
 
-type PostDataType = {
-    id: number
-    post: string
-    likeCount: number
-    dislike: number
-}
-
-type ProfilePageTypes = {
-    newPostText: string
-    posts: Array<PostDataType>
-}
-
-export type StateData = {
-    dialogReducer: DialogsTypes
-    profileReducer: ProfilePageTypes
-}
 
 
 // type DialogsDataType = {
@@ -61,22 +33,52 @@ export type StateData = {
 
 
 
-let mapStateToProps=(state:StateData)=>{
-    console.log(state)
-    return{
-        dialogsData:state,
-        text:state.dialogReducer.messageText
+// let mapStateToProps=(state:StateData)=>{
+//     console.log(state)
+//     return{
+//         dialogsData:state,
+//         text:state.dialogReducer.messageText
+//     }
+// }
+// let mapsDispatchToProps=(dispatch:any)=>{
+//     return{
+//         changeMessage:(e:string)=>{dispatch(changeMessageAC(e))},
+//         sendMessage:(e:string)=>{dispatch(sendMessageAC(e))}
+//
+//     }
+// }
+//
+//
+// const DialogsContainer=connect(mapStateToProps,mapsDispatchToProps)(Dialog);
+//
+// export default DialogsContainer;
+
+
+// import React from 'react';
+//
+// const DialogsContainer = () => {
+//     let dialogsData=useSelector((state :StateData)=>state.dialogReducer);
+//     let dispatch=useDispatch();
+//     let changeMessage=(e:string)=>{
+//         dispatch(changeMessageAC(e))
+//     }
+//     let sendMessage=(e:string)=>{
+//         dispatch(sendMessageAC(e))
+//     }
+//     return <Dialog changeMessage={changeMessage} sendMessage={sendMessage} dilogsData={dialogsData}/>
+// };
+//
+// export default DialogsContainer;
+
+import React from 'react';
+
+const DialogsContainer = () => {
+    let dialogData=useSelector((state:StateData)=>state.dialogReducer)
+    let dispatch=useDispatch();
+    let sendMessage=(e:string)=>{
+        dispatch(sendMessageAC(e))
     }
-}
-let mapsDispatchToProps=(dispatch:any)=>{
-    return{
-        changeMessage:(e:string)=>{dispatch(changeMessageAC(e))},
-        sendMessage:(e:string)=>{dispatch(sendMessageAC(e))}
-
-    }
-}
-
-
-const DialogsContainer=connect(mapStateToProps,mapsDispatchToProps)(Dialog);
+    return <Dialog dilogsData={dialogData} sendMessage={sendMessage}/>
+};
 
 export default DialogsContainer;

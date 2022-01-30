@@ -5,7 +5,8 @@ import SideBar from "./components/SideBar/SideBar";
 import Profile from "./components/Profile/Profile";
 import {Route} from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Users from "./components/Users/Users";
+import UsersCon from "./components/Users/UsersCon";
+import Login from "./components/Login/Login";
 
 // type DialogType = {
 //     id: number
@@ -60,14 +61,17 @@ function App() {
                     <SideBar/>
                 </div>
                 <div className="col-6">
-                    <Route path={'/profile'}
+                    <Route path={'/profile/:userId?'}
                            render={() => <Profile
                            />}/>
                     <Route path={'/messages'}
                            render={() => <DialogsContainer
                            />}/>
                     <Route path={'/users'}
-                           render={() => <Users
+                           render={() => <UsersCon
+                           />}/>
+                    <Route path={'/login'}
+                           render={() => <Login
                            />}/>
                 </div>
                 <div className="col-3">

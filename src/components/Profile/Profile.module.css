@@ -1,3 +1,19 @@
 .wallpict{
    width: 100%;
+   margin-bottom: 15px;
+}
+.ava{
+   border-radius: 50%;
+   width: 170px;
+   height: 170px;
+   border: #888cff solid 3px;
+}
+.about{
+   display: flex;
+   align-items: center;
+}
+.info{
+   margin-left: 15px;
+   align-items: center;
+   margin-top: 15px;
 }

@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import Post from "./Post/Post";
 import p from './MyPosts.module.css'
+import TextAreAndButton from "../../common/TextAreAndButton";
 
 type InPostData = {
     id: number
@@ -9,20 +10,18 @@ type InPostData = {
     dislike: number
 }
 type MyPostsData = {
-    newPostText: string
     postData: Array<InPostData>
     addPost:(e:string)=>void
-    onChangeText:(e:string)=>void
 }
 
 
 const MyPosts = (props: MyPostsData) => {
 
-    const addPost = () => {
-        props.addPost(props.newPostText)
-
-    }
-    const onChangeHendler = (e: ChangeEvent<HTMLTextAreaElement>) =>props.onChangeText(e.currentTarget.value)
+    // const addPost = () => {
+    //     props.addPost(props.newPostText)
+    //
+    // }
+    // const onChangeHendler = (e: ChangeEvent<HTMLTextAreaElement>) =>props.onChangeText(e.currentTarget.value)
 
     let postElement = props.postData.map(post => <Post key={post.id}
                                                        postText={post.post}
@@ -32,11 +31,7 @@ const MyPosts = (props: MyPostsData) => {
         <div className={p.posts}>
             My posts
             <div>
-                <textarea value={props.newPostText}
-                          onChange={onChangeHendler}></textarea>
-                <div>
-                    <button onClick={addPost}>Add post</button>
-                </div>
+                <TextAreAndButton title={'Опубликовать'} message={'New post'} callBack={props.addPost}/>
             </div>
             <div>
                 {postElement}

@@ -1,7 +1,9 @@
-import {ActionType, PostType, ProfilePageTypes} from '../types/Types';
+import {ActionType, PostType, ProfilePageTypes, ProfileType} from '../types/Types';
+import {Dispatch} from "redux";
+import {PROFILE_API} from "../Api/Api";
+
 
 let initialState = {
-    newPostText: 'ww',
     posts: [
         {id: 1, post: 'Hello world', likeCount: 5, dislike: 3},
         {id: 2, post: 'I want to be in USA', likeCount: 55, dislike: 0},
@@ -9,7 +11,9 @@ let initialState = {
         {id: 4, post: 'social network is evil', likeCount: 856, dislike: 800},
         {id: 5, post: 'Hello friend lets walk', likeCount: 1250, dislike: 1},
         {id: 6, post: 'It incubator is best courses', likeCount: 1591, dislike: 0},
-    ]
+    ],
+    profile:null,
+    status:'as'
 }
 
 const ProfileReducer = (state: ProfilePageTypes = initialState, action: ActionType) => {
@@ -24,17 +28,26 @@ const ProfileReducer = (state: ProfilePageTypes = initialState, action: ActionTy
             return {
                 ...state,
                 posts:[...state.posts,newPost],
-                newPostText: ''
             }
             // let newState={...state}
             // newState.posts=[...state.posts]
             // newState.posts.push(newPost);
             // newState.newPostText = ''
             // return newState
-        case 'CHANGE_POST_TEXT':
+        // case 'CHANGE_POST_TEXT':
+        //     return {
+        //         ...state,
+        //         newPostText:action.messageText
+        //     }
+        case 'SET_PROFILE':
             return {
                 ...state,
-                newPostText:action.messageText
+                profile: action.profile
+            }
+        case 'GET_STATUS':
+            return {
+                ...state,
+                status: action.status
             }
         default:
             return state
@@ -46,10 +59,53 @@ export const addPostAC = (newText: string) => {
         messageText: newText
     } as const
 }
-export const changePostTextAC = (newText: string) => {
-    return {
-        type: 'CHANGE_POST_TEXT',
-        messageText: newText
-    } as const
+// export const changePostTextAC = (newText: string) => {
+//     return {
+//         type: 'CHANGE_POST_TEXT',
+//         messageText: newText
+//     } as const
+// }
+
+export const SetProfile=(profile:ProfileType)=>{
+    return{
+        type:'SET_PROFILE',
+        profile
+    }
 }
+const setStatus= (status: string|null)=>{
+    return{
+        type:'GET_STATUS',
+        status
+    }
+}
+export const getUserProfile=(id:number)=>{
+    return (dispatch:Dispatch)=>{
+        PROFILE_API.getUser(id)
+            .then(data=>{
+                setTimeout(()=>{
+                    dispatch(SetProfile(data))
+                },500)
+            })
+
+    }
+}
+
+export const getUserStatus=(id:number)=>{
+    return (dispatch:Dispatch)=>{
+        PROFILE_API.getStatus(id).then((st)=>{
+            dispatch(setStatus(st))
+        })
+    }
+}
+
+export const UpdateStatusGs=(status:string|null)=>{
+    return (dispatch:Dispatch)=>{
+        PROFILE_API.upDateStatus(status).then(res=>{
+            if (res.data.resultCode==0){
+                dispatch(setStatus(status))
+            }
+        })
+    }
+}
+
 export default ProfileReducer;

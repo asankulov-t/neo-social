@@ -1,0 +1,26 @@
+.login{
+    text-align: center;
+}
+.login input{
+    width: 400px;
+    padding:10px;
+    margin-bottom: 15px;
+    border: 1px solid #62d06d;
+    border-radius: 22px;
+    font-weight: bold;
+}
+.check{
+    align-items: center;
+    text-align: center;
+}
+.check input{
+    width: 20px;
+}
+.error input{
+    width: 400px;
+    padding:10px;
+    margin-bottom: 15px;
+    border: 1px solid #62d06d;
+    border-radius: 22px;
+    font-weight: bold;
+}

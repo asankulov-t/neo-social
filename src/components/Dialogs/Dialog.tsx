@@ -2,57 +2,25 @@ import React from 'react';
 import d from './Dialog.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Messages from "./Messages/Messages";
+import {useSelector} from "react-redux";
+import {DialogsTypes, StateData} from "../../types/Types";
+import {Redirect} from "react-router-dom";
 
-// type DialogType = {
-//     id: number
-//     name: string
-// }
-// type DialogsDataType = {
-//     dialogs: Array<DialogType>
-//     messages: Array<MessageType>
-// }
-// type DialogsPostTypes = {
-//     text: string
-//     dialogsData: DialogsDataType
-//     sendMessage:()=>void
-//     changeMessage:(e:string)=>void
-// }
-type MessagesType={
-    id:number
-    message:string
-}
-
-type DoiologType={
-    id:number
-    name:string
-}
-type DialogTypes={
-    dialogs:Array<DoiologType>
-    messageText:string
-    messages:Array<MessagesType>
-}
-type PropsTypes={
-    dialogReducer:DialogTypes
-
-}
-type ForDialog={
-    dialogsData:PropsTypes
-    changeMessage:(e:string)=>void
+type dialogPropTypes={
+    dilogsData:DialogsTypes
     sendMessage:(e:string)=>void
-    text:string
-
 }
-const Dialog = (props: ForDialog) => {
+const Dialog = (props: dialogPropTypes) => {
+    let isAuth=useSelector((state :StateData)=>state.AuthReducer.isAuth)
+    if (!isAuth)return <Redirect to={'/login'}/>
     return (
         <div className={`row ${d.dialogs}`}>
             <div className={'col-3'}>
-                <DialogItem dialogs={props.dialogsData.dialogReducer.dialogs}/>
+                <DialogItem dialogs={props.dilogsData.dialogs}/>
             </div>
             <Messages
-                text={props.text}
-                messageData={props.dialogsData.dialogReducer.messages}
+                messageData={props.dilogsData.messages}
                 sendMessage={props.sendMessage}
-                changeMessage={props.changeMessage}
             />
         </div>
     );

@@ -1,0 +1,30 @@
+
+.text textarea{
+    height: 50px;
+    width: 100%;
+    padding:10px;
+    margin-bottom: 15px;
+    border: 1px solid #62d06d;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.text input{
+    background-color: #3a8e45;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 15px;
+}
+.error textarea{
+    width: 400px;
+    padding:10px;
+    margin-bottom: 15px;
+    border: 1px solid #62d06d;
+    border-radius: 22px;
+    font-weight: bold;
+    background-color: #888cff;
+}
+.text p{
+    color: red;
+}

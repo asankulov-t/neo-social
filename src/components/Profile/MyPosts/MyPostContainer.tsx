@@ -1,8 +1,9 @@
 // import {ActionType, PostType} from "../../redux/store";
-import {addPostAC, changePostTextAC} from "../../../redux/ProfileReducer";
+import {addPostAC} from "../../../redux/ProfileReducer";
 import MyPosts from "./MyPosts";
-import {connect} from "react-redux";
-import {StateData} from "../../Dialogs/DialogsContainer";
+import {connect, useDispatch, useSelector} from "react-redux";
+import {StateData} from "../../../types/Types";
+
 
 // type myPostContainerTypes={
 //     dispatch:(action: ActionType) => void
@@ -28,21 +29,34 @@ import {StateData} from "../../Dialogs/DialogsContainer";
 //     );
 // };
 
-let mapStateToProps=(state:StateData)=>{
-    console.log(state)
-    return{
-        postData:state.profileReducer.posts,
-        newPostText:state.profileReducer.newPostText
-    }
-}
-let mapDispatchToProps=(dispatch:any)=>{
-    return{
-        onChangeText:(e:string)=>{dispatch(changePostTextAC(e))},
-        addPost:(e:string)=>{dispatch(addPostAC(e))}
-    }
-}
+// let mapStateToProps=(state:StateData)=>{
+//     console.log(state)
+//     return{
+//         postData:state.profileReducer.posts,
+//         newPostText:state.profileReducer.newPostText
+//     }
+// }
+// let mapDispatchToProps=(dispatch:any)=>{
+//     return{
+//         onChangeText:(e:string)=>{dispatch(changePostTextAC(e))},
+//         addPost:(e:string)=>{dispatch(addPostAC(e))}
+//     }
+// }
+//
+//
+// const MyPostContainer=connect(mapStateToProps,mapDispatchToProps)(MyPosts);
+//
+// export default MyPostContainer;
 
+import React from 'react';
 
-const MyPostContainer=connect(mapStateToProps,mapDispatchToProps)(MyPosts);
+const MyPostContainer = () => {
+    let postData=useSelector((state:StateData)=>state.profileReducer.posts);
+    let dis=useDispatch();
+    let addPost=(e:string)=>{
+        dis(addPostAC(e))
+    }
+    return <MyPosts postData={postData} addPost={addPost} />
+};
 
 export default MyPostContainer;

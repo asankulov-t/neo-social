@@ -1,42 +1,41 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import p from '../Profile/Profile.module.css'
-// import MyPosts from "./MyPosts/MyPosts";
-// import {ActionType} from "../redux/store";
 import MyPostContainer from "./MyPosts/MyPostContainer";
+import ProfileInfo from "./ProfileInfo";
+import {useDispatch, useSelector} from "react-redux";
+import {getUserProfile, getUserStatus, UpdateStatusGs} from '../../redux/ProfileReducer';
+import {StateData} from "../../types/Types";
+import Loader from "../common/Loader";
+import {Redirect, withRouter} from 'react-router-dom';
 
-// type InPostData = {
-//     id: number
-//     post: string
-//     likeCount: number
-//     dislike: number
-// }
-// type PostDataProps = {
-//     newPostText: string
-//     postData: Array<InPostData>
-//     // addPost: (newText: string) => void
-//     // changePostText:(e:string)=>void
-//     dispatch: (action: ActionType) => void
-//
-// }
+const Profile = ({match}:any) => {
 
+    let dispatch=useDispatch();
 
-const Profile = () => {
-
+    useEffect(()=>{
+        let userId=match.params.userId
+        if (!userId){
+            userId=14328
+        }
+        dispatch(getUserProfile(userId));
+        dispatch(getUserStatus(userId))
+    },[])
+    let profileData=useSelector((state :StateData)=>state.profileReducer.profile);
+    let isAuth=useSelector((state :StateData)=>state.AuthReducer.isAuth)
+    let status=useSelector((state :StateData)=>state.profileReducer.status)
+    let updateFuckingStatus=(status:string|null)=>{
+        dispatch(UpdateStatusGs(status))
+    }
+    console.log(profileData)
+    if (!isAuth)return <Redirect to={'/login'}/>
     return (
         <div className={p.content}>
-            <div>
-                <img className={p.wallpict}
-                     src="https://www.bergfreunde.eu/out/pictures/promo/picture_brandshop_1440x490_4(1).jpg" alt=""/>
-            </div>
-            <div>
-                ava + dess
-            </div>
+            {profileData?<ProfileInfo status={status} updateSt={updateFuckingStatus} profile={profileData}/>:<Loader/>}
             <MyPostContainer
             />
         </div>
     );
 };
-// postData={props.postData}
-// dispatch={props.dispatch}
-// newPostText={props.newPostText}
-export default Profile;
+export default withRouter(Profile);
+
+
