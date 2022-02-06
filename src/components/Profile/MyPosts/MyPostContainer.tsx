@@ -1,7 +1,6 @@
-// import {ActionType, PostType} from "../../redux/store";
 import {addPostAC} from "../../../redux/ProfileReducer";
 import MyPosts from "./MyPosts";
-import {connect, useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import {StateData} from "../../../types/Types";
 
 
@@ -51,12 +50,12 @@ import {StateData} from "../../../types/Types";
 import React from 'react';
 
 const MyPostContainer = () => {
-    let postData=useSelector((state:StateData)=>state.profileReducer.posts);
+    let postData=useSelector((state:StateData)=>state);
     let dis=useDispatch();
     let addPost=(e:string)=>{
         dis(addPostAC(e))
     }
-    return <MyPosts postData={postData} addPost={addPost} />
+    return <MyPosts postData={postData.profileReducer.posts} addPost={addPost} />
 };
 
 export default MyPostContainer;

@@ -49,6 +49,11 @@ const ProfileReducer = (state: ProfilePageTypes = initialState, action: ActionTy
                 ...state,
                 status: action.status
             }
+        case 'SAVE_PHOTO':
+            return {
+                ...state,
+                profile:{...state.profile,photos:action.photo}
+            }
         default:
             return state
     }
@@ -59,12 +64,6 @@ export const addPostAC = (newText: string) => {
         messageText: newText
     } as const
 }
-// export const changePostTextAC = (newText: string) => {
-//     return {
-//         type: 'CHANGE_POST_TEXT',
-//         messageText: newText
-//     } as const
-// }
 
 export const SetProfile=(profile:ProfileType)=>{
     return{
@@ -104,6 +103,20 @@ export const UpdateStatusGs=(status:string|null)=>{
             if (res.data.resultCode==0){
                 dispatch(setStatus(status))
             }
+        })
+    }
+}
+const setPhotoAc=(photo:any)=>{
+    return{
+        type:'SAVE_PHOTO',
+        photo:photo
+    }
+}
+export const SavePhoto=(photo:any)=>{
+    return (dispatch:Dispatch)=>{
+        PROFILE_API.savePhoto(photo).then(res=>{
+            dispatch(setPhotoAc(res.data.data.photos
+            ))
         })
     }
 }

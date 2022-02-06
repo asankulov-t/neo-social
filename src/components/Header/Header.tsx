@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import header from './Header.module.css'
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -11,7 +11,7 @@ const Header = () => {
     // let aut=true
     // useEffect(()=>{
     //    dispatch(getAuthThunk(aut))
-    // },[])
+    // },[aut])
     let headerData = useSelector((state: StateData) => state.AuthReducer)
     let logOut = () => {
         dispatch(logOutThunk())
@@ -19,7 +19,6 @@ const Header = () => {
     return (
         <header className={`${header.header} fixed-top`}>
             <NavLink to="#"><h2>NEO</h2></NavLink>
-            {/*<NavLink to="#">last posts</NavLink>*/}
             <nav className={header.nav}>
                 <ul className={header.ul}>
                     <li className={header.li}><NavLink to="login">{

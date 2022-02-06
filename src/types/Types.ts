@@ -31,6 +31,7 @@ export type ActionType = {
     messageText: string
     profile:ProfileType
     status:string|null
+    photo:any
 }
 export type locationType={
     country:string,
@@ -130,8 +131,13 @@ export type AuthType={
     email:string|null,
     login:string|null,
     isAuth:boolean
+    errorMessage:string|null
 }
 export type AcAuth={
     type:'SET_USER_DATA',
     data:AuthType
+}
+export type ErrorLogin={
+    type:'GET_ERROR',
+    message:string
 }

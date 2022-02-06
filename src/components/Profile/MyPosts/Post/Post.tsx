@@ -18,6 +18,6 @@ const Post = (props:PostTypes) => {
             </div>
         </div>
     );
-};
+}
 
 export default Post;

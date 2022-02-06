@@ -23,9 +23,9 @@ const UsersCon = () => {
     let pageSize=useSelector((state:StateData) => state.userReducer.pageSize);
     let resForPage=Math.ceil(total/pageSize);
     let isAuth=useSelector((state :StateData)=>state.AuthReducer.isAuth)
-
     useEffect(()=>{
                 dis(getUsersThunk(currentPage,resForPage))
+
                 // USERS_API.getUsers(currentPage,pageSize)
                 //     .then(data=>{
                 //     setTimeout(()=>{
