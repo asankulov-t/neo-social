@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/neo-social/static/css/main.03b79d16.chunk.css",
-    "main.js": "/neo-social/static/js/main.1ea50de9.chunk.js",
-    "main.js.map": "/neo-social/static/js/main.1ea50de9.chunk.js.map",
-    "runtime-main.js": "/neo-social/static/js/runtime-main.6b791d8a.js",
-    "runtime-main.js.map": "/neo-social/static/js/runtime-main.6b791d8a.js.map",
-    "static/js/2.72ff1cd4.chunk.js": "/neo-social/static/js/2.72ff1cd4.chunk.js",
-    "static/js/2.72ff1cd4.chunk.js.map": "/neo-social/static/js/2.72ff1cd4.chunk.js.map",
-    "index.html": "/neo-social/index.html",
-    "static/css/main.03b79d16.chunk.css.map": "/neo-social/static/css/main.03b79d16.chunk.css.map",
-    "static/js/2.72ff1cd4.chunk.js.LICENSE.txt": "/neo-social/static/js/2.72ff1cd4.chunk.js.LICENSE.txt",
-    "static/media/ava.689a452b.jpg": "/neo-social/static/media/ava.689a452b.jpg"
+    "main.css": "/static/css/main.a21d244e.chunk.css",
+    "main.js": "/static/js/main.c7ca9990.chunk.js",
+    "main.js.map": "/static/js/main.c7ca9990.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6fd79f88.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6fd79f88.js.map",
+    "static/js/2.72ff1cd4.chunk.js": "/static/js/2.72ff1cd4.chunk.js",
+    "static/js/2.72ff1cd4.chunk.js.map": "/static/js/2.72ff1cd4.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.a21d244e.chunk.css.map": "/static/css/main.a21d244e.chunk.css.map",
+    "static/js/2.72ff1cd4.chunk.js.LICENSE.txt": "/static/js/2.72ff1cd4.chunk.js.LICENSE.txt",
+    "static/media/ava.689a452b.jpg": "/static/media/ava.689a452b.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6b791d8a.js",
+    "static/js/runtime-main.6fd79f88.js",
     "static/js/2.72ff1cd4.chunk.js",
-    "static/css/main.03b79d16.chunk.css",
-    "static/js/main.1ea50de9.chunk.js"
+    "static/css/main.a21d244e.chunk.css",
+    "static/js/main.c7ca9990.chunk.js"
   ]
 }
