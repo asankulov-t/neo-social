@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/neo-social/static/css/main.a21d244e.chunk.css",
-    "main.js": "/neo-social/static/js/main.c7ca9990.chunk.js",
-    "main.js.map": "/neo-social/static/js/main.c7ca9990.chunk.js.map",
+    "main.js": "/neo-social/static/js/main.0c853d38.chunk.js",
+    "main.js.map": "/neo-social/static/js/main.0c853d38.chunk.js.map",
     "runtime-main.js": "/neo-social/static/js/runtime-main.6b791d8a.js",
     "runtime-main.js.map": "/neo-social/static/js/runtime-main.6b791d8a.js.map",
     "static/js/2.72ff1cd4.chunk.js": "/neo-social/static/js/2.72ff1cd4.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.6b791d8a.js",
     "static/js/2.72ff1cd4.chunk.js",
     "static/css/main.a21d244e.chunk.css",
-    "static/js/main.c7ca9990.chunk.js"
+    "static/js/main.0c853d38.chunk.js"
   ]
 }
